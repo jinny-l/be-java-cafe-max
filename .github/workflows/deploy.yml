@@ -31,10 +31,15 @@ jobs:
         shell: bash
 
       # S3 배포 단계
-#      - name: Upload to S3
-#        env:
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#          AWS_REGION:
-#        run:
+      - name: Upload to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_EC2_METADATA_DISABLED: true
+        run:
+          aws s3 sync \
+            -- region ap-northeast-2 \
+            build s3://test-for-tmp-release \
+            -- delete
+        working-directory: ./build
 
