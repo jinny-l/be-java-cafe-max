@@ -8,9 +8,12 @@ files:
 permissions:
   - object: /
     pattern: "**"
+    owner: ubuntu # object 소유자 이름, 안 썼을 때 파일 실행 권한이 없었음
+    group: ubuntu
+    mode: 755
 
 hooks:
   ApplicationStart:
     - location: autobuild.sh
       timeout: 60
-      runas: test
+      runas: ubuntu
