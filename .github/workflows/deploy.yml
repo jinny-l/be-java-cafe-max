@@ -58,5 +58,5 @@ jobs:
           --application-name test
           --deployment-config-name CodeDeployDefault.AllAtOnce 
           --deployment-group-name test
-          --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$practice-deploy.zip
+          --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
 
